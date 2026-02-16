@@ -1,0 +1,65 @@
+/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/numpy/lib/nanfunctions.py:1215: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/numpy/lib/nanfunctions.py:1215: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/numpy/lib/nanfunctions.py:1215: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/numpy/lib/nanfunctions.py:1215: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/numpy/lib/nanfunctions.py:1215: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis, out=out, keepdims=keepdims)
+Columns: Index(['Age Group  ', '  Gender  ', '  Location  ', '  Occupation  ',
+       '  How frequently do you use social media?  ',
+       'Are you familiar with virtual influencers (AI-generated influencers)?',
+       '  Which virtual influencers are you familiar with? (Select all that apply)  ',
+       'Lil Miquela', 'Shudu', 'Imma', 'Noonoouri', 'None',
+       'Misinterpretation', 'Unlisted virtual influencer',
+       'Aware but can’t recall names',
+       '  How often do you engage with virtual influencers on social media?  ',
+       '  What type of content from virtual influencers do you engage with the most?  ',
+       'Fashion & Beauty', 'Technology & AI', 'Music & Entertainment',
+       'Mental Health & Wellness', 'None_content',
+       '  Do you follow both human influencers and virtual influencers?  ',
+       '  How realistic do you find the personalities of virtual influencers?  ',
+       '  Do you think virtual influencers have distinct personalities?  ',
+       '  Which of the following personality traits do you associate with virtual influencers? (Select all that apply)  ',
+       'Artificial / Robotic', 'Friendly', 'Intelligent', 'Relatable',
+       'Charismatic', 'Mysterious', 'Trendy',
+       '  Do you feel that virtual influencers’ personalities adapt over time based on audience interactions?  ',
+       '  Compared to human influencers, do virtual influencers feel more or less relatable?  ',
+       '  Have you ever interacted with a virtual influencer (e.g., comments, messages, polls)?  ',
+       '  Would you prefer virtual influencers to tailor their content based on your preferences?  ',
+       '  If a virtual influencer adapted their personality to match your interests (e.g., recommending music or fashion you like), how would that affect your engagement?  ',
+       '  How do you feel when a virtual influencer acknowledges user comments or feedback?  ',
+       '  How important is authenticity when following an influencer (human or virtual)?  ',
+       '  Do you trust virtual influencers as much as human influencers when they promote a product or brand?  ',
+       '  Would you consider buying a product recommended by a virtual influencer?  ',
+       '  Do you feel emotionally connected to any virtual influencer?  ',
+       '  Would you continue following a virtual influencer if you knew their personality was completely AI-generated and adaptive?  ',
+       '  Overall, how satisfied are you with virtual influencers compared to human influencers?  ',
+       'What do you like most about virtual influencers?',
+       '  What do you dislike about virtual influencers?  ',
+       '  How do you think AI-generated personalities in virtual influencers can be improved?  '],
+      dtype='object')
+Column vi_engagement_freq unique values after map: [nan]
+Column vi_realism unique values after map: [nan]
+Column vi_trust unique values after map: [nan]
+Column vi_purchase_intent unique values after map: [nan]
+Column vi_satisfaction unique values after map: [nan]
+Columns after cleaning: ['vi_familiarity', 'Lil Miquela', 'Shudu', 'Imma', 'Noonoouri', 'None', 'Misinterpretation', 'Unlisted virtual influencer', 'Aware but can’t recall names', 'Fashion & Beauty', 'Technology & AI', 'Music & Entertainment', 'Mental Health & Wellness', 'None_content', 'Do you follow both human influencers and virtual influencers?', 'Do you think virtual influencers have distinct personalities?', 'Artificial / Robotic', 'Friendly', 'Intelligent', 'Relatable', 'Charismatic', 'Mysterious', 'Trendy', 'Do you feel that virtual influencers’ personalities adapt over time based on audience interactions?', 'Compared to human influencers, do virtual influencers feel more or less relatable?', 'Have you ever interacted with a virtual influencer (e.g., comments, messages, polls)?', 'Would you prefer virtual influencers to tailor their content based on your preferences?', 'If a virtual influencer adapted their personality to match your interests (e.g., recommending music or fashion you like), how would that affect your engagement?', 'How do you feel when a virtual influencer acknowledges user comments or feedback?', 'How important is authenticity when following an influencer (human or virtual)?', 'Do you feel emotionally connected to any virtual influencer?', 'Would you continue following a virtual influencer if you knew their personality was completely AI-generated and adaptive?']
+Target vi_satisfaction lost! Unique values: [nan]
+Processed shape: (180, 32)
+Traceback (most recent call last):
+  File "/Users/ronitvyas/.gemini/antigravity/playground/phantom-sunspot/src/data_processing.py", line 152, in <module>
+    X_train, X_test, y_train, y_test, _ = get_train_test_data(processed_df, target)
+  File "/Users/ronitvyas/.gemini/antigravity/playground/phantom-sunspot/src/data_processing.py", line 123, in get_train_test_data
+    X = df_numeric.drop(target_col, axis=1)
+  File "/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/pandas/core/frame.py", line 5344, in drop
+    return super().drop(
+  File "/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/pandas/core/generic.py", line 4711, in drop
+    obj = obj._drop_axis(labels, axis, level=level, errors=errors)
+  File "/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/pandas/core/generic.py", line 4753, in _drop_axis
+    new_axis = axis.drop(labels, errors=errors)
+  File "/Users/ronitvyas/.pyenv/versions/3.9.16/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 7000, in drop
+    raise KeyError(f"{labels[mask].tolist()} not found in axis")
+KeyError: "['vi_satisfaction'] not found in axis"

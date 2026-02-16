@@ -1,0 +1,105 @@
+
+{
+  "name": "Virtual Influencer Survey Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "survey-response",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ],
+      "webhookId": "survey-webhook",
+      "id": "e4c5b2a1-8d9e-4f3c-a9b0-c1d2e3f4g5h6"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/predict",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "features",
+              "value": "={{ $json.body }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Predict Satisfaction",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        680,
+        300
+      ],
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Satisfaction_Score",
+              "value": "={{ $json.predictions.vi_satisfaction }}"
+            },
+            {
+              "name": "Recommendation",
+              "value": "={{ $json.predictions.vi_satisfaction >= 3.5 ? 'NVEST' : ($json.predictions.vi_satisfaction >= 3.0 ? 'PILOT' : 'AVOID') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Business Logic",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ],
+      "id": "f5e4d3c2-b1a0-9e8d-7c6b-5a4f3e2d1c0b"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Predict Satisfaction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Predict Satisfaction": {
+      "main": [
+        [
+          {
+            "node": "Business Logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
