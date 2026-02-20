@@ -83,7 +83,7 @@ def train_model():
     joblib.dump(scaler, 'models/scaler.pkl')
     print("Scaler saved to models/scaler.pkl")
 
-    # Save feature + target configuration
+    # Save feature & target configuration
     feature_columns = processed_df.drop(target_cols, axis=1).columns.tolist()
 
     config = {
@@ -95,7 +95,5 @@ def train_model():
         json.dump(config, f)
 
     print("Model configuration saved to models/config.json")
-
-
 if __name__ == "__main__":
     train_model()
