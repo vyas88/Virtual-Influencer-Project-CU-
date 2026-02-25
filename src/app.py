@@ -85,7 +85,13 @@ def main():
         model, scaler, config = load_model_and_scaler()
         features = config['features'] if config else None
         
+        if "analysis_ran" not in st.session_state:
+            st.session_state.analysis_ran = False
+
         if st.button("Run Analysis"):
+            st.session_state.analysis_ran = True
+
+        if st.session_state.analysis_ran:
             if model is None:
                 st.error("Model not found. Please train the model first.")
                 return
